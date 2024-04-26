@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "algorithms.h"
+
 #define SWAP(a, b) {int _temp = a; a = b; b = _temp;}
 
 // Selection sort --------------------------------------------------------------
@@ -21,7 +23,7 @@ void selection_sort(int * arr, int n) {
 
 // Insertion sort --------------------------------------------------------------
 
-void insertion_sort(int *arr, int n) {
+void insertion_sort(int * arr, int n) {
   for (int i = 1; i < n; i++) {
     int current = arr[i];
     int p = i-1;

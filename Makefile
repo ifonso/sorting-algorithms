@@ -1,12 +1,20 @@
 CC = gcc
-CFLAGS = -I .
-SOURCES = $(wildcard *.c)
+CFLAGS = -I src
+SRCDIR = src
+SOURCES = $(wildcard $(SRCDIR)/*.c)
 OUTPUT = out
 
-all: $(OUTPUT)
+slection_sort_time: $(SOURCES)
+	$(CC) $(CFLAGS) $(SOURCES) time_selection_sort_test.c -o $(OUTPUT)
 
-$(OUTPUT): $(SOURCES)
-	$(CC) $(CFLAGS) $(SOURCES) -o $(OUTPUT)
+insertion_sort_time: $(SOURCES)
+	$(CC) $(CFLAGS) $(SOURCES) time_insertion_sort_test.c -o $(OUTPUT)
 
-clean:
-	rm -f $(OUTPUT)
+merge_sort_time: $(SOURCES)
+	$(CC) $(CFLAGS) $(SOURCES) time_merge_sort_test.c -o $(OUTPUT)
+
+quick_sort_time: $(SOURCES)
+	$(CC) $(CFLAGS) $(SOURCES) time_quick_sort_test.c -o $(OUTPUT)
+
+heap_sort_time: $(SOURCES)
+	$(CC) $(CFLAGS) $(SOURCES) time_heap_sort_test.c -o $(OUTPUT)
