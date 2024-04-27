@@ -18,3 +18,6 @@ quick_sort_time: $(SOURCES)
 
 heap_sort_time: $(SOURCES)
 	$(CC) $(CFLAGS) $(SOURCES) time_heap_sort_test.c -o $(OUTPUT)
+
+faster_quick_sort_time: $(SOURCES)
+	$(CC) $(CFLAGS) $(SOURCES) time_faster_quick_sort_test.c -o $(OUTPUT)

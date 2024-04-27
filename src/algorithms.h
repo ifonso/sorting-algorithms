@@ -17,4 +17,6 @@ void merge_sort(int * arr, int n);
 void quick_sort(int * arr, int n);
 void heap_sort(int * arr, int n);
 
+void faster_quick_sort(int * arr, int n);
+
 #endif /* ALGORITHMS_H_ */

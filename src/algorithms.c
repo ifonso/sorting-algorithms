@@ -152,3 +152,51 @@ void heap_sort(int * arr, int n) {
     __heapify(arr, i, 0);
   }
 }
+
+// Faster quick sort -----------------------------------------------------------
+
+int __median_of_three(int *arr, int low, int high) {
+  int mid = low + (high - low) / 2;
+
+  if (arr[low] > arr[mid])
+    SWAP(arr[low], arr[mid]);
+
+  if (arr[low] > arr[high])
+    SWAP(arr[low], arr[high]);
+
+  if (arr[mid] > arr[high])
+    SWAP(arr[mid], arr[high]);
+
+  return mid;
+}
+
+int __faster_partition(int *arr, int low, int high) {
+  int pivotIndex = __median_of_three(arr, low, high);
+  int pivotValue = arr[pivotIndex];
+  int i = low - 1;
+
+  SWAP(arr[pivotIndex], arr[high]);
+
+  for (int j = low; j < high; j++) {
+    if (arr[j] < pivotValue) {
+      i++;
+      SWAP(arr[i], arr[j]);
+    }
+  }
+
+  SWAP(arr[i + 1], arr[high]);
+  return i + 1;
+}
+
+void __faster_quick_sort(int *arr, int low, int high) {
+  if (low < high) {
+    int pivotIndex = __faster_partition(arr, low, high);
+
+    __faster_quick_sort(arr, low, pivotIndex - 1);
+    __faster_quick_sort(arr, pivotIndex + 1, high);
+  }
+}
+
+void faster_quick_sort(int *arr, int n) {
+  __faster_quick_sort(arr, 0, n - 1);
+}
